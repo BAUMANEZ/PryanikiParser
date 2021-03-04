@@ -14,13 +14,13 @@ struct PryanikiResponse: Codable {
 
 struct ViewData: Codable {
     let name: String
-    let data: ContentData
+    let data: ContentInView
 }
 
-struct ContentData: Codable {
-    let url: String?
+struct ContentInView: Codable {
+    let url: URL?
     let text: String?
-    let selectedID: Int?
+    let selectedId: Int?
     let variants: [Variant]?
 }
 

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2178B9EF25F13DB60094D490 /* PryanikiTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178B9EE25F13DB60094D490 /* PryanikiTableView.swift */; };
+		2178B9FA25F1449A0094D490 /* PryanikiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178B9F925F1449A0094D490 /* PryanikiViewModel.swift */; };
+		2178B9FE25F14CD60094D490 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178B9FD25F14CD60094D490 /* MainCell.swift */; };
+		2178BA0625F155670094D490 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178BA0525F155670094D490 /* UIExtensions.swift */; };
+		2178BA0D25F16FA90094D490 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178BA0C25F16FA90094D490 /* Colors.swift */; };
+		2178BA1225F1721C0094D490 /* HzCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178BA1125F1721C0094D490 /* HzCell.swift */; };
+		2178BA1625F172230094D490 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178BA1525F172230094D490 /* PictureCell.swift */; };
+		2178BA1925F1722E0094D490 /* SelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178BA1825F1722E0094D490 /* SelectorCell.swift */; };
 		21AD23AB25F128BF0079967E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD23AA25F128BF0079967E /* Request.swift */; };
 		21AD23B525F12E340079967E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD23B425F12E340079967E /* Response.swift */; };
 		21C761C225F0ED7C00669CD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C761C125F0ED7C00669CD6 /* AppDelegate.swift */; };
@@ -21,6 +28,13 @@
 /* Begin PBXFileReference section */
 		02F0371B38BD3180F2777084 /* Pods_PryanikiParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PryanikiParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2178B9EE25F13DB60094D490 /* PryanikiTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikiTableView.swift; sourceTree = "<group>"; };
+		2178B9F925F1449A0094D490 /* PryanikiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikiViewModel.swift; sourceTree = "<group>"; };
+		2178B9FD25F14CD60094D490 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		2178BA0525F155670094D490 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		2178BA0C25F16FA90094D490 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2178BA1125F1721C0094D490 /* HzCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HzCell.swift; sourceTree = "<group>"; };
+		2178BA1525F172230094D490 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
+		2178BA1825F1722E0094D490 /* SelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorCell.swift; sourceTree = "<group>"; };
 		21AD23AA25F128BF0079967E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		21AD23B425F12E340079967E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		21C761BE25F0ED7C00669CD6 /* PryanikiParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PryanikiParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +72,29 @@
 		2178B9F525F141940094D490 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2178B9F925F1449A0094D490 /* PryanikiViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2178B9FC25F14CA00094D490 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2178B9FD25F14CD60094D490 /* MainCell.swift */,
+				2178BA1125F1721C0094D490 /* HzCell.swift */,
+				2178BA1525F172230094D490 /* PictureCell.swift */,
+				2178BA1825F1722E0094D490 /* SelectorCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2178BA0B25F16F9B0094D490 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2178BA0525F155670094D490 /* UIExtensions.swift */,
+				2178BA0C25F16FA90094D490 /* Colors.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		21AD23B125F12E210079967E /* Model */ = {
@@ -74,6 +109,7 @@
 		21AD23B725F138260079967E /* Main Module */ = {
 			isa = PBXGroup;
 			children = (
+				2178B9FC25F14CA00094D490 /* Cells */,
 				21AD23B125F12E210079967E /* Model */,
 				21AD23B925F13C810079967E /* View */,
 				2178B9F525F141940094D490 /* ViewModel */,
@@ -112,8 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				21AD23B725F138260079967E /* Main Module */,
-				21C761C125F0ED7C00669CD6 /* AppDelegate.swift */,
+				2178BA0B25F16F9B0094D490 /* Resources */,
 				21C761C325F0ED7C00669CD6 /* SceneDelegate.swift */,
+				21C761C125F0ED7C00669CD6 /* AppDelegate.swift */,
 				21C761CA25F0ED7E00669CD6 /* Assets.xcassets */,
 				21C761CC25F0ED7E00669CD6 /* LaunchScreen.storyboard */,
 				21C761CF25F0ED7E00669CD6 /* Info.plist */,
@@ -242,12 +279,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2178B9FA25F1449A0094D490 /* PryanikiViewModel.swift in Sources */,
+				2178BA0D25F16FA90094D490 /* Colors.swift in Sources */,
 				2178B9EF25F13DB60094D490 /* PryanikiTableView.swift in Sources */,
 				21AD23AB25F128BF0079967E /* Request.swift in Sources */,
 				21C761C625F0ED7C00669CD6 /* MainViewController.swift in Sources */,
+				2178B9FE25F14CD60094D490 /* MainCell.swift in Sources */,
+				2178BA0625F155670094D490 /* UIExtensions.swift in Sources */,
 				21C761C225F0ED7C00669CD6 /* AppDelegate.swift in Sources */,
+				2178BA1625F172230094D490 /* PictureCell.swift in Sources */,
 				21C761C425F0ED7C00669CD6 /* SceneDelegate.swift in Sources */,
+				2178BA1225F1721C0094D490 /* HzCell.swift in Sources */,
 				21AD23B525F12E340079967E /* Response.swift in Sources */,
+				2178BA1925F1722E0094D490 /* SelectorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

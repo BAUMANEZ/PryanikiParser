@@ -15,10 +15,16 @@ class PryanikiTableView: UITableView {
         alwaysBounceVertical = false
         alwaysBounceHorizontal = false
         showsHorizontalScrollIndicator = false
+        estimatedRowHeight = 100
+        rowHeight = UITableView.automaticDimension
+        tableFooterView = UIView()
+        separatorColor = .selectedCellColor
     }
     
     func registerCells() {
-        
+        register(HzCell.self, forCellReuseIdentifier: HzCell.cellIdentifier)
+        register(PictureCell.self, forCellReuseIdentifier: PictureCell.cellIdentifier)
+        register(SelectorCell.self, forCellReuseIdentifier: SelectorCell.cellIdentifier)
     }
     
     required init?(coder: NSCoder) {
