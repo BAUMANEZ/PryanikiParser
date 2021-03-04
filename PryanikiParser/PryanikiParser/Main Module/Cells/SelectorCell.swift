@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 //MARK: - SELECTOR CELL
 class SelectorCell: MainCell {
