@@ -10,8 +10,6 @@ import SnapKit
 
 class MainViewController: UIViewController {
     private var pryanikiViewModel: PryanikiViewModel?
-    
-    private let label = UILabel()
     private let tableView = PryanikiTableView()
     
     override func loadView() {

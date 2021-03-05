@@ -15,6 +15,7 @@ class HzCell: MainCell {
     
     override func setViewModel(_ viewModel: ViewData) {
         super.setViewModel(viewModel)
+        insideTextLabel.textAlignment = .justified
         insideTextLabel.text = viewModel.data.text
     }
     
