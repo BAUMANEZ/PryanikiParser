@@ -24,7 +24,8 @@ class SelectorCell: MainCell {
         }
         itemsInPicker = variants
         if let selectedItemIndex = variants.firstIndex(where: { $0.id == selectedId }) {
-            pickerView.selectRow(selectedItemIndex, inComponent: pickerView.numberOfComponents - 1, animated: false)
+            pickerView.selectRow(selectedItemIndex, inComponent: pickerView.numberOfComponents - 1,
+                                 animated: false)
         }
     }
     
@@ -37,8 +38,10 @@ class SelectorCell: MainCell {
         }
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
         configurePickerView()
         selectedBackgroundView = UIView()
         pickerView.delegate = self
@@ -56,15 +59,20 @@ extension SelectorCell: UIPickerViewDelegate, UIPickerViewDataSource {
         1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
         return itemsInPicker.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
         itemsInPicker[row].text
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
         let item = itemsInPicker[row]
         let itemText = item.text
         let itemId = item.id

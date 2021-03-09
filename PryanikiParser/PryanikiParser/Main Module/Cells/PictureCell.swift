@@ -13,15 +13,17 @@ class PictureCell: MainCell {
     static let cellIdentifier = "picture"
     private let pictureImageView = UIImageView()
     private let insideTextLabel = UILabel()
+    private let labelsStackView = UIStackView()
+    private let mainStackView = UIStackView()
     
     override func setViewModel(_ viewModel: ViewData) {
         super.setViewModel(viewModel)
+        insideTextLabel.text = viewModel.data.text
         guard
             let url = viewModel.data.url,
             let image = getImage(from: url)
         else { return }
         pictureImageView.image = image
-        insideTextLabel.text = viewModel.data.text
     }
     
     func getImage(from url: URL) -> UIImage? {
@@ -29,30 +31,38 @@ class PictureCell: MainCell {
         return UIImage(data: data)
     }
     
-    func configureTextLabel() {
-        contentView.addSubview(insideTextLabel)
+    func configureLabels() {
+        nameLabel.snp.removeConstraints()
+        contentView.subviews.forEach { $0.removeFromSuperview() }
         insideTextLabel.styleLabel(font: .systemFont(ofSize: 18),
-                                   textColor: .systemGray2)
-        insideTextLabel.snp.makeConstraints { insideTextLabelPosition in
-            insideTextLabelPosition.top.equalTo(nameLabel.snp.bottom).offset(5)
-            insideTextLabelPosition.right.equalTo(nameLabel.snp.right)
-            insideTextLabelPosition.left.equalTo(nameLabel.snp.left)
-            insideTextLabelPosition.bottom.equalToSuperview().offset(-10)
-        }
+                                   textColor: .systemGray2,
+                                   numberOfLines: 4)
+        labelsStackView.styleStackView(spacing: 5,
+                                       axis: .vertical,
+                                       alignment: .leading,
+                                       distribution: .fill)
+        
+        labelsStackView.addArrangedSubview(nameLabel)
+        labelsStackView.addArrangedSubview(insideTextLabel)
     }
     
-    func configurePictureImageView() {
-        contentView.addSubview(pictureImageView)
-        pictureImageView.snp.makeConstraints { imageViewPosition in
-            imageViewPosition.right.equalToSuperview().offset(-10)
-            imageViewPosition.top.equalToSuperview().offset(10)
-            imageViewPosition.height.width.equalTo(80)
-            imageViewPosition.bottom.equalToSuperview().offset(-10)
+    func configureStackViews() {
+        configureLabels()
+        mainStackView.styleStackView(spacing: 15,
+                                     axis: .horizontal,
+                                     alignment: .center,
+                                     distribution: .fill)
+        mainStackView.addArrangedSubview(labelsStackView)
+        mainStackView.addArrangedSubview(pictureImageView)
+        contentView.addSubview(mainStackView)
+        pictureImageView.snp.makeConstraints { picturePosition in
+            picturePosition.width.height.equalTo(80)
         }
-        nameLabel.snp.remakeConstraints { nameLabelPosition in
-            nameLabelPosition.top.equalTo(pictureImageView)
-            nameLabelPosition.left.equalToSuperview().offset(20)
-            nameLabelPosition.right.equalTo(pictureImageView.snp.left).inset(-10)
+        
+        mainStackView.snp.makeConstraints { stackViewPosition in
+            stackViewPosition.left.equalTo(20)
+            stackViewPosition.top.equalTo(10)
+            stackViewPosition.right.bottom.equalTo(-10)
         }
     }
     
@@ -62,11 +72,13 @@ class PictureCell: MainCell {
         delegate?.didTapCell(with: name, description: "In the image you can see '\(pictureName)'")
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureTextLabel()
-        configurePictureImageView()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCell))
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
+        configureStackViews()
+        let gestureRecognizer = UITapGestureRecognizer(target: self,
+                                                       action: #selector(didTapCell))
         addGestureRecognizer(gestureRecognizer)
     }
     

@@ -26,7 +26,8 @@ class MainCell: UITableViewCell, MainCellProtocol {
     
     func configureNameLabel() {
         nameLabel.styleLabel(font: .systemFont(ofSize: 36, weight: .bold),
-                             textColor: .black)
+                             textColor: .black,
+                             numberOfLines: 2)
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { nameLabelPosition in
             nameLabelPosition.left.equalTo(20)
@@ -35,8 +36,10 @@ class MainCell: UITableViewCell, MainCellProtocol {
         }
     }
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
         configureNameLabel()
         let selectedView = UIView()
         selectedView.backgroundColor = .selectedCellColor

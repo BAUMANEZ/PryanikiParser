@@ -47,9 +47,16 @@ extension MainViewController {
 
 //MARK: - CELL TAP DELEGATE
 extension MainViewController: CellTapDelegate {
-    func didTapCell(with name: String, description: String) {
-        let alert = UIAlertController(title: "My name is \(name)!", message: description, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+    func didTapCell(with name: String,
+                    description: String) {
+        let alert = UIAlertController(title: "My name is \(name)!",
+                                      message: description,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Okay",
+                                      style: .cancel,
+                                      handler: nil))
+        
         present(alert, animated: true, completion: nil)
     }
 }
@@ -60,11 +67,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return pryanikiViewModel?.pryanikiResponse?.view.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let model = pryanikiViewModel?.pryanikiResponse else { return UITableViewCell() }
         let cellType = model.view[indexPath.row] 
         guard
@@ -78,8 +87,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath,
+                              animated: true)
     }
 }
 

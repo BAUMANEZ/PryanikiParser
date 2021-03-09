@@ -22,7 +22,8 @@ class HzCell: MainCell {
     func configureTextLabel() {
         contentView.addSubview(insideTextLabel)
         insideTextLabel.styleLabel(font: .systemFont(ofSize: 18),
-                                   textColor: .systemGray2)
+                                   textColor: .systemGray2,
+                                   numberOfLines: 0)
         insideTextLabel.snp.makeConstraints { insideTextLabelPosition in
             insideTextLabelPosition.top.equalTo(nameLabel.snp.bottom).offset(5)
             insideTextLabelPosition.right.equalTo(nameLabel.snp.right)
@@ -37,10 +38,13 @@ class HzCell: MainCell {
         delegate?.didTapCell(with: name, description: "I have the following text: '\(text)'")
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
         configureTextLabel()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCell))
+        let gestureRecognizer = UITapGestureRecognizer(target: self,
+                                                       action: #selector(didTapCell))
         addGestureRecognizer(gestureRecognizer)
     }
     
