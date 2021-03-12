@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 class MainViewController: UIViewController {
-    private var pryanikiViewModel: PryanikiViewModel?
     private let tableView = PryanikiTableView()
+    private var cellsToDisplay = [ViewData]()
+    private var pryanikiViewModel: PryanikiViewModel?
     
     override func loadView() {
         super.loadView()
@@ -28,7 +29,13 @@ class MainViewController: UIViewController {
     func assignViewModel() {
         pryanikiViewModel = PryanikiViewModel()
         pryanikiViewModel?.bindViewModelToView = { [weak self] in
-            guard let self = self else { return }
+            guard
+                let self = self,
+                let model = self.pryanikiViewModel?.pryanikiResponse
+            else { return }
+            self.cellsToDisplay = model.view.flatMap { cellType in
+                model.data.filter { $0.name == cellType }
+            }
             self.tableView.reloadData()
         }
     }
@@ -69,15 +76,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return pryanikiViewModel?.pryanikiResponse?.view.count ?? 0
+        return cellsToDisplay.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = pryanikiViewModel?.pryanikiResponse else { return UITableViewCell() }
-        let cellType = model.view[indexPath.row] 
+        let cellViewModel = cellsToDisplay[indexPath.row]
+        let cellType = cellViewModel.name
         guard
-            let cellViewModel = model.data.first(where: { $0.name == cellType }),
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType) as? MainCell
         else {
             return UITableViewCell()

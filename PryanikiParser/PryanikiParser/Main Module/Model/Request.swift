@@ -18,7 +18,7 @@ protocol ParsingProtocol {
 
 class PryanikiRequest: ParsingProtocol {
     public static let shared: ParsingProtocol = PryanikiRequest()
-    private let urlToParseFrom = "https://pryaniky.com/static/json/sample.json"
+    private let urlToParseFrom = "https://chat.pryaniky.com/json/data-custom-order-much-more-items-in-data.json"
     
     func parseData(completion: @escaping (Result<PryanikiResponse, ParsingError>) -> ()) {
         AF.request(urlToParseFrom)
